@@ -7,6 +7,14 @@
     "start": "index.js"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC"
+  "author": "TH",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonyhewett/codespace-auth-2025.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tonyhewett/codespace-auth-2025/issues"
+  },
+  "homepage": "https://github.com/tonyhewett/codespace-auth-2025#readme"
 }
