@@ -24,8 +24,8 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"settings": {
-			"editor.fontsize": 32,
-			"terminal.integrated.fontsize": 32
+			"editor.fontSize": 32,
+			"terminal.integrated.fontSize": 32
 		}
 	}
 
