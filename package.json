@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "An auth system designed in codespace",
   "main": "index.js",
-  "scripts": {    
-    "start": "index.js"
+  "scripts": {
+    "start": "node index.js",
+    "start-mongoose-test": "node mongoose-test/index.js"
   },
   "keywords": [],
   "author": "TH",
