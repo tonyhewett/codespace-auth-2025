@@ -72,7 +72,8 @@ app.post('/login', async (req,res) => {
         if (singingInUser && isPwdMatch) {
             const token = jwt.sign(
                 {id: singingInUser._id},
-                'secret', // should set to access process.env.jwtsecret
+                const JWT_SECRET = process.env.JWT_SECRET
+                //'secret', // should set to access process.env.jwtsecret
                 {
                     expiresIn: "1h"
                 }
