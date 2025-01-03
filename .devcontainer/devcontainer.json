@@ -26,16 +26,16 @@
 	//	"extensions": [
 	//		"esbenp.prettier-vscode",
 	//		"rangav.vscode-thunder-client"
-	//	],
-		"settings": {
-			"editor.fontSize": 32,
-			"terminal.integrated.fontSize": 32
-		},
+	//	],		
 		"vscode": {
 			"extensions": [
 				"Postman.postman-for-vscode",
 				"esbenp.prettier-vscode"
-			]
+				],
+			"settings": {
+				"editor.fontSize": 20,
+				"terminal.integrated.fontSize": 20
+			}
 		}
 	}
 
