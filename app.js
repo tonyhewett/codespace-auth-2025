@@ -69,11 +69,11 @@ app.post('/login', async (req,res) => {
         }
         // validate password
         const isPwdMatch = await bcrypt.compare(password, singingInUser.password)
+        const {JWT_SECRET} = process.env
         if (singingInUser && isPwdMatch) {
             const token = jwt.sign(
                 {id: singingInUser._id},
-                const JWT_SECRET = process.env.JWT_SECRET
-                //'secret', // should set to access process.env.jwtsecret
+                JWT_SECRET, 
                 {
                     expiresIn: "1h"
                 }
