@@ -1,10 +1,12 @@
 require('dotenv').config()
 require("./database/database.js").connect()
+
 const User = require('./models/user')
 const express = require('express')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const cookieParser = require('cookie-parser')
+const auth = require('./middleware/auth.js')
 
 const app = express()
 app.use(express.json())
@@ -105,14 +107,15 @@ app.post('/login', async (req,res) => {
     }
 })
 
-app.get("/dashboard", (req,res) => {
-    // grab token from cookie
-
-    // stop if no token
-
-    // decode token
-
+app.get("/dashboard", auth, (req,res) => {
+   
+    console.log(req.user);
+    
     res.send('Welcome to dashboard')
+})
+
+app.get("/settings", auth, (req,res) => {
+    res.send("User settings ...")
 })
 
 module.exports = app
