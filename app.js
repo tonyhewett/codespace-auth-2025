@@ -51,7 +51,7 @@ app.post("/register", async (req,res) => {
         res.status(201).json(newUser)
 
     } catch (error) {
-        console.log(error())      
+        console.log(error)      
     }
 })
 
@@ -69,8 +69,13 @@ app.post('/login', async (req,res) => {
         }
         // validate password
         const isPwdMatch = await bcrypt.compare(password, singingInUser.password)
+        console.log("isPwdMatch: " + isPwdMatch);
+        
+        if (!isPwdMatch) {
+            res.status(401).send("password didn't match!")            
+        }
         const {JWT_SECRET} = process.env
-        if (singingInUser && isPwdMatch) {
+        //if (singingInUser && isPwdMatch) { // getting errors with this being true for valid scenarios
             const token = jwt.sign(
                 {id: singingInUser._id},
                 JWT_SECRET, 
@@ -80,15 +85,16 @@ app.post('/login', async (req,res) => {
             );
             singingInUser.token = token
             singingInUser.password = undefined
-        }
+        //} // left out if condition to avoid error
+
         // if valid send a token 
 
         // cookie section
         const options = {
-            expires: new Date(Date.now() + 3*24*60*60*1000),
+            expires: new Date(Date.now() + 3*24*60*60*1000), // expires in 3 days using units of milliseconds
             httpOnly: true
         };
-        res.status(200).cookie("token", token, options).json({
+        res.status(200).cookie("token", singingInUser.token, options).json({
             success: true,
             token,
             singingInUser
@@ -97,6 +103,16 @@ app.post('/login', async (req,res) => {
     } catch (error) {
         console.log(error);        
     }
+})
+
+app.get("/dashboard", (req,res) => {
+    // grab token from cookie
+
+    // stop if no token
+
+    // decode token
+
+    res.send('Welcome to dashboard')
 })
 
 module.exports = app
